@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用说明 · leyu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f6f0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #2e2b27;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0 2rem 0;
+            border-bottom: 1px solid #e2ddd4;
+            margin-bottom: 2.5rem;
+        }
+
+        .nav-brand {
+            font-weight: 500;
+            font-size: 1.25rem;
+            letter-spacing: 0.02em;
+            color: #5e4f3a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+            color: #7a6b5a;
+        }
+
+        .nav-links span {
+            cursor: default;
+        }
+
+        .nav-links a {
+            color: #7a6b5a;
+            text-decoration: none;
+            border-bottom: 1px dotted transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #7a6b5a;
+        }
+
+        /* 主内容区 */
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            margin: 0 0 0.75rem 0;
+            line-height: 1.3;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #6b5d4d;
+            margin-bottom: 2rem;
+            border-left: 4px solid #c8b9a6;
+            padding-left: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem 0;
+            color: #3e352a;
+            border-bottom: 1px solid #ddd6cb;
+            padding-bottom: 0.4rem;
+        }
+
+        .text-block {
+            background: #fffffffa;
+            padding: 1.6rem 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            margin: 1.8rem 0;
+            border: 1px solid #ece6db;
+        }
+
+        .text-block p {
+            margin-bottom: 0.9rem;
+        }
+
+        .text-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .callout {
+            background: #f2ede5;
+            border-left: 6px solid #b3a089;
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+            font-size: 0.96rem;
+        }
+
+        .callout strong {
+            color: #4a3d2e;
+        }
+
+        /* 三个场景卡片 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .scene-card {
+            background: #fffffffa;
+            border: 1px solid #e5ddd1;
+            border-radius: 16px;
+            padding: 1.6rem 1.2rem;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+            transform: translateY(-2px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #3f362b;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #5f5446;
+        }
+
+        .scene-card .emoji-marker {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 1.1rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-item {
+            border-bottom: 1px solid #e2dbd1;
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #3b3228;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #5f5547;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #5f5547;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #c4b7a5;
+        }
+
+        .faq-a a:hover {
+            color: #2e2b27;
+            text-decoration-color: #2e2b27;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 3.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2ddd4;
+            font-size: 0.88rem;
+            color: #8a7d6c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer a {
+            color: #7a6b5a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #ccc2b3;
+        }
+
+        .footer a:hover {
+            color: #2e2b27;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem 1.2rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .text-block {
+                padding: 1.2rem;
+            }
+            .scene-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <div class="nav-brand">leyu · 简明指南</div>
+        <div class="nav-links">
+            <span>概览</span>
+            <span>场景</span>
+            <span>常见说明</span>
+        </div>
+    </nav>
+
+    <!-- hero 区 -->
+    <h1>使用 leyu 之前，先了解这些</h1>
+    <div class="subhead">
+        一份整理过的说明页，帮你快速理解平台性质与访问要点。
+    </div>
+
+    <!-- 介绍 + 提醒 -->
+    <div class="text-block">
+        <p><strong>leyu</strong> 是一个综合性的线上服务平台。如果你正在寻找它的入口或想确认使用方式，下面几条简明信息值得先过一遍。平台本身不设特殊门槛，但保持对信息来源的核对习惯总是好的。</p>
+        <p>开始之前可以先明确一点：任何服务都有其适用范围，<a href="https://audit-leyu.com.cn">leyu</a> 同样如此。下面几个模块从实际使用角度做了拆分，你可以挑感兴趣的部分先看。</p>
+    </div>
+
+    <!-- 提示框 -->
+    <div class="callout">
+        <strong>💡 访问提醒</strong><br>
+        如果你是通过搜索引擎或第三方推荐来到这个页面，建议直接对照官方域名。当前介绍的对应站点是 <a href="https://audit-leyu.com.cn" style="color:#4a3d2e; text-decoration:underline; text-underline-offset:2px;">leyu</a>，其他相似名称的网站未必具有相同内容或服务，注意区分。
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="section-title">常见使用场景</div>
+    <div class="scene-grid">
+        <div class="scene-card">
+            <h3><span class="emoji-marker">📋</span>信息确认</h3>
+            <p>在开始使用前，花几分钟阅览平台上的说明或公告。很多疑问其实已经在常见问题里有了答复，直接查看能节省时间。</p>
+        </div>
+        <div class="scene-card">
+            <h3><span class="emoji-marker">🔐</span>账户与访问</h3>
+            <p>建议通过浏览器直接输入 <a href="https://audit-leyu.com.cn" style="color:#3f362b; text-decoration:underline; text-underline-offset:2px;">leyu</a> 地址访问，避免使用来源不明的链接或二维码，减少不必要的风险。</p>
+        </div>
+        <div class="scene-card">
+            <h3><span class="emoji-marker">📎</span>内容参考</h3>
+            <p>如果你需要引用平台上的资料或数据，尽量标注来源日期。网络信息会更新，养成核对最新版本的习惯会更稳妥。</p>
+        </div>
+    </div>
+
+    <!-- 附加说明块 -->
+    <div class="text-block" style="margin-top: 0.5rem;">
+        <p>以上三个场景覆盖了大部分使用者最常遇到的情况。无论是第一次接触还是已经使用过一段时间，保持相对清晰的访问路径都有好处。如果你发现某个功能或页面和自己预期不同，先看看站内有没有相关说明——大多数时候都能找到答案。</p>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="section-title">一些常见说明</div>
+
+    <div class="faq-item">
+        <div class="faq-q">问：leyu 是否需要注册才能访问全部内容？</div>
+        <div class="faq-a">部分基础信息在未登录状态下可以直接浏览，但某些功能或板块可能需要账号。具体以 <a href="https://audit-leyu.com.cn">leyu</a> 站内实际情况为准。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">问：我怎样确认自己访问的是正确的站点？</div>
+        <div class="faq-a">直接在地址栏输入 <a href="https://audit-leyu.com.cn">leyu</a> 的完整域名，并检查地址是否以 https:// 开头。不通过第三方中介跳转是较为稳妥的方式。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">问：如果遇到页面加载异常，应该怎么办？</div>
+        <div class="faq-a">可以先刷新页面或检查本地网络。如果问题持续，可以留意平台公告或联系站内支持渠道。不要轻信非官方渠道给出的所谓“临时链接”。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">问：平台上的信息多久更新一次？</div>
+        <div class="faq-a">不同板块更新节奏不一样，重要的通知或调整通常会通过站内消息或公告发布。建议定期留意相关区域。</div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <span>内容整理 · 仅供说明参考</span>
+        <span><a href="https://audit-leyu.com.cn">leyu</a> — 直接访问</span>
+    </div>
+
+</body>
+</html>
