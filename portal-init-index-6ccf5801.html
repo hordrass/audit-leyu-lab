@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常查询·对照·延伸阅读 — ayx</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #fafaf8;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", sans-serif;
+      color: #2c2c2c;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* hero */
+    .hero {
+      padding: 3.2rem 0 2rem;
+      border-bottom: 1px solid #e4e4e0;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 350;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+    .hero .sub {
+      font-size: 1rem;
+      color: #7a7a77;
+      border-left: 2px solid #c6c6c0;
+      padding-left: 1rem;
+      margin-top: 0.4rem;
+    }
+    .hero .sub span {
+      background: #ecece7;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      color: #3b3b39;
+      margin-left: 0.2rem;
+    }
+
+    /* 背景说明 block */
+    .context-block {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.6rem 1.8rem;
+      background: #f3f3ef;
+      border-radius: 1px;
+      position: relative;
+    }
+    .context-block::before {
+      content: "◈";
+      position: absolute;
+      left: -0.6rem;
+      top: -0.4rem;
+      font-size: 1.2rem;
+      color: #a8a8a0;
+    }
+    .context-block p {
+      font-size: 0.95rem;
+      color: #3a3a37;
+      margin-bottom: 0.4rem;
+    }
+    .context-block p:last-child {
+      margin-bottom: 0;
+    }
+    .context-block strong {
+      font-weight: 500;
+      color: #1f1f1d;
+    }
+
+    /* section 通用 */
+    section {
+      margin: 2.4rem 0;
+    }
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: 420;
+      letter-spacing: 0.01em;
+      color: #222;
+      border-bottom: 1px solid #e0dfda;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    section p {
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+      color: #3b3b38;
+    }
+    .soft-meta {
+      display: inline-block;
+      background: #eeede8;
+      padding: 0 0.4rem;
+      font-size: 0.8rem;
+      color: #5e5e59;
+      border-radius: 2px;
+    }
+
+    /* 卡片式要点 (非传统卡片, 更像笔记条目) */
+    .note-list {
+      margin: 1.2rem 0;
+    }
+    .note-item {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+    .note-item .marker {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #eae9e2;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #555550;
+      font-weight: 400;
+      margin-top: 0.2rem;
+    }
+    .note-item .text {
+      flex: 1;
+    }
+    .note-item .text p {
+      margin-bottom: 0.3rem;
+    }
+    .note-item .text .meta-tag {
+      font-size: 0.8rem;
+      color: #8a8a84;
+    }
+
+    /* 引用 / 提示 */
+    .callout-tip {
+      background: #f9f9f5;
+      border-left: 3px solid #b8b8ae;
+      padding: 1rem 1.4rem;
+      margin: 1.8rem 0;
+      font-size: 0.95rem;
+      color: #3e3e3b;
+    }
+    .callout-tip a {
+      color: #3d3d3a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c8c8c0;
+      transition: text-decoration-color 0.15s;
+    }
+    .callout-tip a:hover {
+      text-decoration-color: #7a7a72;
+    }
+
+    /* 页尾 */
+    .site-footer {
+      margin: 3.5rem 0 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e4e4e0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.85rem;
+      color: #7e7e78;
+    }
+    .site-footer .footer-hint {
+      max-width: 60%;
+    }
+    .site-footer .footer-hint a {
+      color: #3c3c38;
+      text-decoration: none;
+      border-bottom: 1px dotted #b0b0a8;
+    }
+    .site-footer .footer-hint a:hover {
+      border-bottom-color: #5e5e56;
+    }
+    .site-footer .footer-stamp {
+      color: #9f9f98;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .context-block {
+        padding: 1.2rem 1.2rem;
+      }
+      .note-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .note-item .marker {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.6rem;
+      }
+      .site-footer {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .site-footer .footer-hint {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- hero -->
+    <header class="hero">
+      <h1>查询·对照·延伸</h1>
+      <div class="sub">从一条记录出发 <span>日常参考</span></div>
+    </header>
+
+    <!-- 背景说明  杂志式简短导语 -->
+    <div class="context-block">
+      <p><strong>为什么总在翻看同一个地方？</strong><br>因为每次检索都不是简单重复——对照上次的笔记，补上遗漏的细节，再循着线索找到下一处。这里没有终点，只有不断展开的阅读层。</p>
+      <p>从基础索引到关联条目，<strong>ayx</strong> 像一本可以随时摊开的活页手册，专为那些需要反复查阅、比较和串联信息的人准备。</p>
+    </div>
+
+    <!-- 三段自然介绍（日常场景） -->
+    <section>
+      <h2>① 日常查询 · 不只是关键字</h2>
+      <p>把 <span class="soft-meta">ayx</span> 当作书桌边的固定工具：查一个编号、确认一条术语、回溯一次变更。和普通搜索引擎不同，这里的结构更贴近实际使用逻辑——每一条都有上下文，每一次返回都能看到上次标记的位置。</p>
+      <p>比如你正在整理一张对照表，需要同时核对三个条目，<a href="https://portal-init-ayx.com">ayx</a> 的视图切换能让对比变得直接，不用反复开新标签页。</p>
+    </section>
+
+    <section>
+      <h2>② 对照 · 并排看差异</h2>
+      <div class="note-list">
+        <div class="note-item">
+          <span class="marker">1</span>
+          <div class="text">
+            <p><strong>版本对照</strong> —— 同一组数据在不同时间点的表述变化，逐行高亮显示，适合验收更新或追溯记录。</p>
+            <span class="meta-tag">常用场景：比对修订、校对文案</span>
+          </div>
+        </div>
+        <div class="note-item">
+          <span class="marker">2</span>
+          <div class="text">
+            <p><strong>条目并列</strong> —— 把两份独立记录拖入同一视窗，横向对照参数、描述或状态，减少来回翻页的疲劳。</p>
+            <span class="meta-tag">对阅读习惯友好，尤其适合宽屏</span>
+          </div>
+        </div>
+      </div>
+      <p>这些对照功能不是花哨的装饰——它们是日常工作中最频繁的操作之一。你可以在 <a href="https://portal-init-ayx.com">ayx</a> 里找到对应的视图入口，调整成自己顺手的布局。</p>
+    </section>
+
+    <section>
+      <h2>③ 延伸阅读 · 从一条记录到一张网</h2>
+      <p>一篇文章的脚注、一条数据的来源、一个分类下的相邻条目…… ayx 把链接做成可追溯的路径。你点开一个引用，并不会离开当前页面，而是以浮层或侧栏的形式展示原文片段。</p>
+      <p>这种“不跳出”的阅读流，让延伸变得自然——你不需要刻意记住自己看到哪，因为上下文始终在。有次我为了查一个缩写，最后顺着关联条目读完了一整组背景说明，那种感觉就像在图书馆里偶遇一本正好需要的书。</p>
+      <div class="callout-tip">
+        ◇ 小提示：把常用条目固定到快捷栏，下次打开 <a href="https://portal-init-ayx.com">ayx</a> 就能直接从停下的地方继续。
+      </div>
+    </section>
+
+    <!-- FAQ 摘要 (简短) -->
+    <section style="margin-top: 0.8rem;">
+      <h2>一些常见疑问 · 摘要</h2>
+      <p><strong>需要注册吗？</strong><br>不需要。目前 <a href="https://portal-init-ayx.com">ayx</a> 的查阅和对照功能对所有人开放，没有登录限制。</p>
+      <p><strong>内容会更新吗？</strong><br>会。索引库定期根据公开资料补充和修正，每次更新都会保留版本记录，方便对照。</p>
+      <p><strong>移动端体验如何？</strong><br>页面做了响应式适配，窄屏下条目会自动堆叠，对照模式调整为上下布局，核心功能不受影响。</p>
+    </section>
+
+    <!-- 页尾访问提示 -->
+    <footer class="site-footer">
+      <div class="footer-hint">
+        <span>随时可以翻开的地方 → </span>
+        <a href="https://portal-init-ayx.com">ayx</a>
+        <span> · 日常查询·对照·延伸阅读</span>
+      </div>
+      <div class="footer-stamp">索引参考 · 持续整理</div>
+    </footer>
+  </div>
+</body>
+</html>
